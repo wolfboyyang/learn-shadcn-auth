@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
+import { StackProvider, StackTheme } from "@stackframe/stack";
+import { stackServerApp } from "../stack";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
-import { AppSidebar } from "@/components/app-sidebar";
+
 import { ModeToggle } from "@/components/mode-toggle";
 
 const geistSans = Geist({
@@ -31,19 +32,19 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <SidebarProvider>
-            <AppSidebar />
-            <SidebarTrigger />
-            <ModeToggle />
-            <main className="mx-5 mt-16 sm:ml-[300px] sm:mt-3">{children}</main>
-          </SidebarProvider>
-        </ThemeProvider>
+        <StackProvider app={stackServerApp}>
+          <StackTheme>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+            >
+              <ModeToggle />
+              {children}
+            </ThemeProvider>
+          </StackTheme>
+        </StackProvider>
       </body>
     </html>
   );
