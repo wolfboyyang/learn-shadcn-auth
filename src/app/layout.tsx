@@ -7,8 +7,6 @@ import { ThemeProvider } from "next-themes";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale } from "next-intl/server";
 
-import { ModeToggle } from "@/components/mode-toggle";
-
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -43,10 +41,7 @@ export default async function RootLayout({
               enableSystem
               disableTransitionOnChange
             >
-              <NextIntlClientProvider>
-                <ModeToggle />
-                {children}
-              </NextIntlClientProvider>
+              <NextIntlClientProvider>{children}</NextIntlClientProvider>
             </ThemeProvider>
           </StackTheme>
         </StackProvider>

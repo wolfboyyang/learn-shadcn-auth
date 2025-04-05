@@ -1,12 +1,6 @@
-import {
-  Calendar,
-  Contact,
-  Home,
-  Inbox,
-  Monitor,
-  Search,
-  Settings,
-} from "lucide-react";
+"use client";
+
+import { Contact, Home, Monitor, Settings } from "lucide-react";
 
 import {
   Sidebar,
@@ -22,6 +16,8 @@ import {
 } from "@/components/ui/sidebar";
 import { UserButton } from "@stackframe/stack";
 import { useTranslations } from "next-intl";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export function AppSidebar() {
   const t = useTranslations("AccountSettings");
@@ -34,7 +30,7 @@ export function AppSidebar() {
     },
     {
       title: t("My Profile"),
-      url: "#profile",
+      url: "/dashboard/profile",
       icon: Contact,
     },
     {
@@ -49,6 +45,7 @@ export function AppSidebar() {
     },
   ];
 
+  const pathname = usePathname();
   return (
     <Sidebar>
       <SidebarHeader />
@@ -61,11 +58,15 @@ export function AppSidebar() {
             <SidebarMenu>
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
-                    <a href={item.url}>
+                  <SidebarMenuButton
+                    asChild
+                    tooltip={item.title}
+                    isActive={pathname === item.url}
+                  >
+                    <Link href={item.url}>
                       <item.icon />
                       <span>{item.title}</span>
-                    </a>
+                    </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
