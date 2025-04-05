@@ -1,0 +1,145 @@
+{
+  "HomePage": {
+    "title": "Hello world!!"
+  },
+  "UserButton": {
+    "Not signed in": "Not signed in",
+    "Account settings": "Account settings",
+    "Dashboard": "Dashboard",
+    "Sign in": "Sign in",
+    "Toggle theme": "Toggle theme",
+    "Sign up": "Sign up",
+    "Sign out": "Sign out"
+  },
+  "AccountSettings": {
+    "My Profile": "My Profile",
+    "Emails & Auth": "Emails & Auth",
+    "Active Sessions": "Active Sessions",
+    "Settings": "Settings",
+    "Teams": "Teams",
+    "Create a team": "Create a team",
+    "Account Settings": "Account Settings"
+  },
+  "ProfilePage": {
+    "User name": "User name",
+    "User name tips": "This is a display name and is not used for authentication",
+    "Profile image": "Profile image",
+    "Profile image tips": "Upload your own image as your avatar"
+  },
+  "EmailsSection": {
+    "strictEmailSchema tips": "Please enter a valid email address",
+    "email exists tips": "Email already exists",
+    "Email is required": "Email is required",
+    "Emails": "Emails",
+    "Enter email": "Enter email",
+    "Cancel": "Cancel",
+    "Add an email": "Add an email",
+    "Primary": "Primary",
+    "Unverified": "Unverified",
+    "Used for sign-in": "Used for sign-in",
+    "Send verification email": "Send verification email",
+    "Set as primary": "Set as primary",
+    "verify first tips": "Please verify your email first",
+    "Use for sign-in": "Use for sign-in",
+    "duplicate email tips": "This email is already used for sign-in by another user.",
+    "Stop using for sign-in": "Stop using for sign-in",
+    "last email tips": "You can not remove your last sign-in email",
+    "Remove": "Remove"
+  },
+  "ActiveSessionsPage": {
+    "Failed to revoke session": "Failed to revoke session",
+    "Failed to revoke all sessions": "Failed to revoke all sessions",
+    "Active Sessions": "Active Sessions",
+    "Confirm": "Confirm",
+    "Cancel": "Cancel",
+    "Revoke All Other Sessions": "Revoke All Other Sessions",
+    "footnote tips": "These are devices where you're currently logged in. You can revoke access to end a session.",
+    "Session": "Session",
+    "IP Address": "IP Address",
+    "Location": "Location",
+    "Last used": "Last used",
+    "No active sessions found": "No active sessions found",
+    "Current Session": "Current Session",
+    "Other Session": "Other Session",
+    "Impersonation": "Impersonation",
+    "Signed in {time}": "Signed in {time}",
+    "-": "-",
+    "Unknown": "Unknown",
+    "Never": "Never",
+    "Revoke": "Revoke",
+    "disable revoke tips": "You cannot revoke your current session"
+  },
+  "OtpSection": {
+    "OTP sign-in": "OTP sign-in",
+    "OTP enabled tips": "OTP/magic link sign-in is currently enabled.",
+    "OTP disabled tips": "Enable sign-in via magic link or OTP sent to your sign-in emails.",
+    "Disable OTP": "Disable OTP",
+    "disable OTP confirm": "Are you sure you want to disable OTP sign-in? You will not be able to sign in with only emails anymore.",
+    "Disable": "Disable",
+    "Cancel": "Cancel",
+    "last signin method tips": "OTP sign-in is enabled and cannot be disabled as it is currently the only sign-in method",
+    "Enable OTP": "Enable OTP",
+    "verify email first": "To enable OTP sign-in, please add a verified sign-in email."
+  },
+  "SignOutSection": {
+    "Sign out": "Sign out",
+    "signout tips": "End your current session"
+  },
+  "LeaveTeamSection": {
+    "Leave Team": "Leave Team",
+    "Leave team": "Leave team",
+    "leave team tips": "leave this team and remove your team profile",
+    "confirm leave team": "Are you sure you want to leave the team?",
+    "Leave": "Leave",
+    "Cancel": "Cancel"
+  },
+  "TeamProfileImageSection": {
+    "Team profile image": "Team profile image",
+    "team profile image tips": "Upload an image for your team"
+  },
+  "TeamDisplayNameSection": {
+    "Team display name": "Team display name",
+    "team display name tips": "Change the display name of your team"
+  },
+  "TeamUserProfileSection": {
+    "Team user name": "Team user name",
+    "team user name tips": "Overwrite your user display name in this team"
+  },
+  "MemberInvitationsSectionInvitationsList": {
+    "Outstanding invitations": "Outstanding invitations",
+    "Expires": "Expires"
+  },
+  "MemberInvitationSectionInner": {
+    "strictEmailSchema tips": "Please enter a valid email address",
+    "empty email tips": "Please enter an email address",
+    "Invite member": "Invite member",
+    "invite member tips": "Invite a user to your team through email",
+    "Email": "Email",
+    "Invite User": "Invite User",
+    "Invited": "Invited"
+  },
+  "MemberListSectionInner": {
+    "Members": "Members",
+    "User": "User",
+    "Name": "Name"
+  },
+  "TeamCreation": {
+    "empty team name": "Please enter a team name",
+    "team creation disabled": "Team creation is not enabled",
+    "Create a Team": "Create a Team",
+    "create team tips": "Enter a display name for your new team",
+    "Create": "Create"
+  },
+  "DeleteAccountSection": {
+    "Delete Account": "Delete Account",
+    "delete account tips": "Permanently remove your account and all associated data",
+    "Danger zone": "Danger zone",
+    "Delete account": "Delete account",
+    "confirm tips": "Are you sure you want to delete your account? This action is IRREVERSIBLE and will delete ALL associated data.",
+    "Cancel": "Cancel"
+  },
+  "EditableText": {
+    "Save": "Save",
+    "Cancel": "Cancel"
+  }
+}
