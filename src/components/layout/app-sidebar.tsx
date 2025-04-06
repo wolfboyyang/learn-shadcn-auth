@@ -40,7 +40,7 @@ export function AppSidebar() {
     },
     {
       title: "Settings",
-      url: "#",
+      url: "/dashboard/settings",
       icon: Settings,
     },
   ];
