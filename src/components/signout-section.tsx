@@ -5,7 +5,7 @@ import { Section } from "./elements/section";
 import { Button } from "./ui/button";
 import { useUser } from "@stackframe/stack";
 
-export default function SignOutSection() {
+export function SignOutSection() {
   const t = useTranslations("SignOutSection");
   const user = useUser({ or: "throw" });
 

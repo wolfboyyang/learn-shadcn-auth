@@ -13,7 +13,7 @@ import {
 import { Button } from "./ui/button";
 import { Typography } from "@stackframe/stack-ui";
 
-export default function DeleteAccountSection() {
+export function DeleteAccountSection() {
   const t = useTranslations("DeleteAccountSection");
   const user = useUser({ or: "redirect" });
   const app = useStackApp();

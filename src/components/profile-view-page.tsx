@@ -7,7 +7,7 @@ import { ProfileImageEditor } from "@/components/profile-image-editor";
 import { useUser } from "@stackframe/stack";
 import { useTranslations } from "next-intl";
 
-export default function ProfileViewPage() {
+export function ProfileViewPage() {
   const t = useTranslations("ProfilePage");
   const user = useUser({ or: "redirect" });
   return (

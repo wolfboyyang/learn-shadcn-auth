@@ -19,7 +19,7 @@ import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-export function AppSidebar() {
+export default function AppSidebar() {
   const t = useTranslations("AccountSettings");
   // Menu items.
   const items = [

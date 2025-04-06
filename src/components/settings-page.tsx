@@ -1,8 +1,8 @@
-import DeleteAccountSection from "./delete-account-section";
+import { DeleteAccountSection } from "./delete-account-section";
 import PageLayout from "./layout/page-layout";
-import SignOutSection from "./signout-section";
+import { SignOutSection } from "./signout-section";
 
-export default function SettingsPage() {
+export function SettingsPage() {
   return (
     <PageLayout title="Settings">
       <DeleteAccountSection />
