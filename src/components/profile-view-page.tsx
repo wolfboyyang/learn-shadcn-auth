@@ -2,7 +2,7 @@
 
 import { EditableText } from "@/components/elements/editable-text";
 import { Section } from "@/components/elements/section";
-import PageContainer from "@/components/layout/page-container";
+import PageLayout from "@/components/layout/page-layout";
 import { ProfileImageEditor } from "@/components/profile-image-editor";
 import { useUser } from "@stackframe/stack";
 import { useTranslations } from "next-intl";
@@ -11,7 +11,7 @@ export default function ProfileViewPage() {
   const t = useTranslations("ProfilePage");
   const user = useUser({ or: "redirect" });
   return (
-    <PageContainer>
+    <PageLayout>
       <div className="space-y-4">
         <Section title={t("User name")} description={t("User name tips")}>
           <EditableText
@@ -34,6 +34,6 @@ export default function ProfileViewPage() {
           />
         </Section>
       </div>
-    </PageContainer>
+    </PageLayout>
   );
 }

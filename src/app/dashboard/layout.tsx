@@ -16,7 +16,15 @@ export default async function DashboardLayout({
       <SidebarInset>
         <Header />
         {/* page main content */}
-        {children}
+        <div className="self-stretch flex-grow w-full">
+          <div className="stack-scope flex w-full h-full max-w-full relative">
+            <div className="flex-1 w-0 flex justify-center gap-4 py-2 px-4">
+              <div className="flex flex-col max-w-[800px] w-[800px]">
+                <div className="flex-1">{children}</div>
+              </div>
+            </div>
+          </div>
+        </div>
         {/* page main content ends */}
       </SidebarInset>
     </SidebarProvider>
