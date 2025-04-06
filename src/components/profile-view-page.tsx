@@ -11,7 +11,7 @@ export default function ProfileViewPage() {
   const t = useTranslations("ProfilePage");
   const user = useUser({ or: "redirect" });
   return (
-    <PageLayout>
+    <PageLayout title={t("title")}>
       <div className="space-y-4">
         <Section title={t("User name")} description={t("User name tips")}>
           <EditableText

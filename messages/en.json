@@ -21,6 +21,7 @@
     "Account Settings": "Account Settings"
   },
   "ProfilePage": {
+    "title": "My Profile",
     "User name": "User name",
     "User name tips": "This is a display name and is not used for authentication",
     "Profile image": "Profile image",
