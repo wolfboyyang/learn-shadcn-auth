@@ -35,7 +35,7 @@ export function AppSidebar() {
     },
     {
       title: t("Active Sessions"),
-      url: "#",
+      url: "/dashboard/active-sessions",
       icon: Monitor,
     },
     {

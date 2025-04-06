@@ -48,6 +48,7 @@
     "Remove": "Remove"
   },
   "ActiveSessionsPage": {
+    "title": "Active Sessions",
     "Failed to revoke session": "Failed to revoke session",
     "Failed to revoke all sessions": "Failed to revoke all sessions",
     "Active Sessions": "Active Sessions",
