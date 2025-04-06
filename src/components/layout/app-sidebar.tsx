@@ -47,7 +47,7 @@ export default function AppSidebar() {
 
   const pathname = usePathname();
   return (
-    <Sidebar>
+    <Sidebar collapsible="icon">
       <SidebarHeader />
       <SidebarContent>
         <SidebarGroup>
