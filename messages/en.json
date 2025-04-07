@@ -126,6 +126,7 @@
     "Name": "Name"
   },
   "TeamCreation": {
+    "title": "Create a Team",
     "empty team name": "Please enter a team name",
     "team creation disabled": "Team creation is not enabled",
     "Create a Team": "Create a Team",
