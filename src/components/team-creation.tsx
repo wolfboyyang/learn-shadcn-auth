@@ -33,14 +33,9 @@ export function TeamCreation() {
     resolver: yupResolver(teamCreationSchema),
   });
   const app = useStackApp();
-  const project = app.useProject();
   const user = useUser({ or: "redirect" });
   const navigate = app.useNavigate();
   const [loading, setLoading] = useState(false);
-
-  if (!project.config.clientTeamCreationEnabled) {
-    return <MessageCard title={t("team creation disabled")} />;
-  }
 
   const onSubmit = async (data: yup.InferType<typeof teamCreationSchema>) => {
     setLoading(true);

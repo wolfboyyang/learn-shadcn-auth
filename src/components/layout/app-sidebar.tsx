@@ -1,16 +1,6 @@
 "use client";
 
-import {
-  CirclePlus,
-  Contact,
-  DivideIcon,
-  Home,
-  Icon,
-  IdCard,
-  Monitor,
-  Settings,
-  Sun,
-} from "lucide-react";
+import { CirclePlus, Contact, Home, Monitor, Settings } from "lucide-react";
 
 import {
   Sidebar,
@@ -29,9 +19,6 @@ import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { TeamIcon } from "../team-icon";
-import { Typography } from "@stackframe/stack-ui";
-import { TeamPage } from "../team-page";
-import { TeamCreation } from "../Team-creation";
 import { Separator } from "../ui/separator";
 
 type MenuItem = {
@@ -49,7 +36,7 @@ export default function AppSidebar() {
   const stackApp = useStackApp();
   const project = stackApp.useProject();
   // Menu items.
-  let items: MenuItem[] = [
+  const items: MenuItem[] = [
     {
       title: "Home",
       url: "/",
