@@ -18,13 +18,13 @@ import { deleteTeam } from "@/lib/actions";
 export function DeleteTeamSection({ team }: { team: Team }) {
   const user = useUser({ or: "redirect" });
   const hasPermission = user.hasPermission(team, "$delete_team");
-  if (!hasPermission) {
-    return null;
-  }
-
   const t = useTranslations("DeleteTeamSection");
   const [deleting, setDeleting] = useState(false);
   const router = useRouter();
+
+  if (!hasPermission) {
+    return null;
+  }
 
   return (
     <Section title={t("Delete Team")} description={t("delete team tips")}>

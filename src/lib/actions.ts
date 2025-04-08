@@ -10,8 +10,6 @@ export type ClientTeam = {
   id: string;
   displayName: string;
   profileImageUrl: string | null;
-  clientMetadata: any;
-  clientReadOnlyMetadata: any;
 };
 
 export async function createUser(team_id: string, email: string) {
@@ -98,8 +96,6 @@ export async function getTeams() {
     id: t.id,
     displayName: t.displayName,
     profileImageUrl: t.profileImageUrl,
-    clientMetadata: t.clientMetadata,
-    clientReadOnlyMetadata: t.clientReadOnlyMetadata,
   }));
   console.log(clientTeams);
   return clientTeams;

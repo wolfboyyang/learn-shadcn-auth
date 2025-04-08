@@ -27,9 +27,6 @@ import {
   hasCreateTeamPermission,
 } from "@/lib/actions";
 
-const ADMIN_TEAM_ID = process.env.ADMIN_TEAM_ID;
-const PROFESSOR_TEAM_ID = process.env.PROFESSOR_TEAM_ID;
-
 type MenuItem = {
   title: string;
   url: string;

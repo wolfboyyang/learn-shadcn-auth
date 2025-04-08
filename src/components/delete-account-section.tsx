@@ -17,14 +17,14 @@ import { useRouter } from "next/navigation";
 export function DeleteAccountSection() {
   const app = useStackApp();
   const project = app.useProject();
-  if (!project.config.clientUserDeletionEnabled) {
-    return null;
-  }
-
   const t = useTranslations("DeleteAccountSection");
   const [deleting, setDeleting] = useState(false);
   const user = useUser({ or: "redirect" });
   const router = useRouter();
+
+  if (!project.config.clientUserDeletionEnabled) {
+    return null;
+  }
 
   return (
     <Section title={t("Delete Account")} description={t("delete account tips")}>
