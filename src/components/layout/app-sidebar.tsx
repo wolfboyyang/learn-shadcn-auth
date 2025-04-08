@@ -20,6 +20,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { TeamIcon } from "../team-icon";
 import { Separator } from "../ui/separator";
+import { useEffect, useState } from "react";
+import { hasCreateTeamPermission } from "@/lib/actions";
+
+const ADMIN_TEAM_ID = process.env.ADMIN_TEAM_ID;
+const PROFESSOR_TEAM_ID = process.env.PROFESSOR_TEAM_ID;
 
 type MenuItem = {
   title: string;
@@ -35,6 +40,20 @@ export default function AppSidebar() {
   const teams = user.useTeams();
   const stackApp = useStackApp();
   const project = stackApp.useProject();
+
+  const [createTeamEnabled, setCreateTeamEnabled] = useState(false);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const result = await hasCreateTeamPermission();
+        setCreateTeamEnabled(result);
+      } catch (error) {
+        console.error("Error checking create team permission:", error);
+      }
+    };
+
+    fetchData();
+  }, [user]);
   // Menu items.
   const items: MenuItem[] = [
     {
@@ -78,7 +97,8 @@ export default function AppSidebar() {
       url: `/dashboard/teams/${team.id}`,
     })),
   );
-  if (project.config.clientTeamCreationEnabled)
+
+  if (createTeamEnabled)
     items.push({
       title: t("Create a team"),
       icon: <CirclePlus />,

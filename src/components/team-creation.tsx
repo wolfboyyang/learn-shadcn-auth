@@ -1,22 +1,23 @@
 "use client";
 
-import * as yup from "yup";
+import { createTeam } from "@/lib/actions";
 import { yupResolver } from "@hookform/resolvers/yup";
 import {
   yupObject,
   yupString,
 } from "@stackframe/stack-shared/dist/schema-fields";
-import { useStackApp, useUser } from "@stackframe/stack";
+import { runAsynchronouslyWithAlert } from "@stackframe/stack-shared/dist/utils/promises";
+import { Loader2 } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import PageLayout from "./layout/page-layout";
-import { Section } from "./elements/section";
-import { runAsynchronouslyWithAlert } from "@stackframe/stack-shared/dist/utils/promises";
-import { Input } from "./ui/input";
+import * as yup from "yup";
 import { FormWarningText } from "./elements/form-warning";
+import { Section } from "./elements/section";
+import PageLayout from "./layout/page-layout";
 import { Button } from "./ui/button";
-import { Loader2 } from "lucide-react";
+import { Input } from "./ui/input";
 
 export function TeamCreation() {
   const t = useTranslations("TeamCreation");
@@ -32,30 +33,25 @@ export function TeamCreation() {
   } = useForm({
     resolver: yupResolver(teamCreationSchema),
   });
-  const app = useStackApp();
-  const user = useUser({ or: "redirect" });
-  const navigate = app.useNavigate();
+  const router = useRouter();
   const [loading, setLoading] = useState(false);
 
   const onSubmit = async (data: yup.InferType<typeof teamCreationSchema>) => {
     setLoading(true);
 
-    let team;
     try {
-      team = await user.createTeam({ displayName: data.displayName });
+      const team_id = await createTeam(data.displayName);
+      const url = `/dashboard/teams/${team_id}`;
+      router.prefetch(url);
+      router.push(url);
     } finally {
       setLoading(false);
     }
-
-    navigate(`#team-${team.id}`);
   };
 
   return (
     <PageLayout title={t("title")}>
-      <Section
-        title={t("title")}
-        description={t("Enter a display name for your new team")}
-      >
+      <Section title={t("title")} description={t("create team tips")}>
         <form
           onSubmit={(e) =>
             runAsynchronouslyWithAlert(handleSubmit(onSubmit)(e))

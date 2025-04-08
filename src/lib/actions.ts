@@ -33,3 +33,28 @@ export async function createUser(team_id: string, email: string) {
   }
   return true;
 }
+
+export async function hasCreateTeamPermission() {
+  const user = await stackServerApp.getUser({ or: "redirect" });
+  if (PROFESSOR_TEAM_ID) {
+    const team = await user.getTeam(PROFESSOR_TEAM_ID);
+    if (team) return true;
+  }
+
+  if (ADMIN_TEAM_ID) {
+    const team = await user.getTeam(ADMIN_TEAM_ID);
+    if (team) return true;
+  }
+
+  return false;
+}
+
+export async function createTeam(name: string) {
+  const user = await stackServerApp.getUser({ or: "redirect" });
+  const team = await stackServerApp.createTeam({
+    creatorUserId: user.id,
+    displayName: name,
+  });
+
+  return team.id;
+}
