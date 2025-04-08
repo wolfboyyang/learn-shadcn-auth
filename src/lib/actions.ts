@@ -6,6 +6,14 @@ const ADMIN_TEAM_ID = process.env.ADMIN_TEAM_ID;
 const PROFESSOR_TEAM_ID = process.env.PROFESSOR_TEAM_ID;
 const STUDENT_TEAM_ID = process.env.STUDENT_TEAM_ID;
 
+export type ClientTeam = {
+  id: string;
+  displayName: string;
+  profileImageUrl: string | null;
+  clientMetadata: any;
+  clientReadOnlyMetadata: any;
+};
+
 export async function createUser(team_id: string, email: string) {
   const inviter = await stackServerApp.getUser({ or: "redirect" });
   const team = await stackServerApp.getTeam(team_id);
@@ -81,4 +89,18 @@ export async function deleteTeam(team_id: string) {
   await team.delete();
 
   return true;
+}
+
+export async function getTeams() {
+  const user = await stackServerApp.getUser({ or: "redirect" });
+  const teams = await user.listTeams();
+  const clientTeams = teams.map((t) => ({
+    id: t.id,
+    displayName: t.displayName,
+    profileImageUrl: t.profileImageUrl,
+    clientMetadata: t.clientMetadata,
+    clientReadOnlyMetadata: t.clientReadOnlyMetadata,
+  }));
+  console.log(clientTeams);
+  return clientTeams;
 }

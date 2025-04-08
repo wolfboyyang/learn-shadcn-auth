@@ -1,7 +1,7 @@
 import { Avatar, AvatarImage, Typography } from "@stackframe/stack-ui";
-import { type Team } from "@stackframe/stack";
+import { type ClientTeam } from "@/lib/actions";
 
-export function TeamIcon({ team }: { team: Team }) {
+export function TeamIcon({ team }: { team: ClientTeam }) {
   if (team.profileImageUrl) {
     return (
       <Avatar className="min-w-6 min-h-6 max-w-6 max-h-6 rounded">

@@ -21,7 +21,11 @@ import { usePathname } from "next/navigation";
 import { TeamIcon } from "../team-icon";
 import { Separator } from "../ui/separator";
 import { useEffect, useState } from "react";
-import { hasCreateTeamPermission } from "@/lib/actions";
+import {
+  type ClientTeam,
+  getTeams,
+  hasCreateTeamPermission,
+} from "@/lib/actions";
 
 const ADMIN_TEAM_ID = process.env.ADMIN_TEAM_ID;
 const PROFESSOR_TEAM_ID = process.env.PROFESSOR_TEAM_ID;
@@ -37,9 +41,23 @@ type MenuItem = {
 export default function AppSidebar() {
   const t = useTranslations("AccountSettings");
   const user = useUser({ or: "redirect" });
-  const teams = user.useTeams();
+
   const stackApp = useStackApp();
   const project = stackApp.useProject();
+
+  const [teams, setTeams] = useState<ClientTeam[]>([]);
+  useEffect(() => {
+    const fetchTeams = async () => {
+      try {
+        const result = await getTeams();
+        setTeams(result);
+      } catch (error) {
+        console.error("Error fetching teams:", error);
+      }
+    };
+
+    fetchTeams();
+  }, [user]);
 
   const [createTeamEnabled, setCreateTeamEnabled] = useState(false);
   useEffect(() => {
