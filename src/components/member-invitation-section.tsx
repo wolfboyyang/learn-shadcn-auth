@@ -1,6 +1,6 @@
 "use client";
 
-import { useStackApp, useUser, type Team } from "@stackframe/stack";
+import { useUser, type Team } from "@stackframe/stack";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -25,8 +25,6 @@ import {
   TableHeader,
   TableRow,
 } from "./ui/table";
-import { cx } from "class-variance-authority";
-import { stackServerApp } from "@/stack";
 import { createUser } from "@/lib/actions";
 
 export function MemberInvitationSection({ team }: { team: Team }) {

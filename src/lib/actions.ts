@@ -4,7 +4,7 @@ import { stackServerApp } from "@/stack";
 
 const ADMIN_TEAM_ID = process.env.ADMIN_TEAM_ID;
 const PROFESSOR_TEAM_ID = process.env.PROFESSOR_TEAM_ID;
-const STUDENT_TEAM_ID = process.env.STUDENT_TEAM_ID;
+// const STUDENT_TEAM_ID = process.env.STUDENT_TEAM_ID;
 
 export async function createUser(team_id: string, email: string) {
   const inviter = await stackServerApp.getUser({ or: "redirect" });
