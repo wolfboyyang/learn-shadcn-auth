@@ -4,7 +4,7 @@ import { stackServerApp } from "@/stack";
 
 const ADMIN_TEAM_ID = process.env.ADMIN_TEAM_ID;
 const PROFESSOR_TEAM_ID = process.env.PROFESSOR_TEAM_ID;
-// const STUDENT_TEAM_ID = process.env.STUDENT_TEAM_ID;
+const STUDENT_TEAM_ID = process.env.STUDENT_TEAM_ID;
 
 export async function createUser(team_id: string, email: string) {
   const inviter = await stackServerApp.getUser({ or: "redirect" });
@@ -57,4 +57,28 @@ export async function createTeam(name: string) {
   });
 
   return team.id;
+}
+
+export async function deleteTeam(team_id: string) {
+  const user = await stackServerApp.getUser({ or: "redirect" });
+  const team = await stackServerApp.getTeam(team_id);
+  if (team === null) return false;
+  const hasPermission = await user.getPermission(team, "$delete_team");
+  if (!hasPermission) return false;
+
+  const users = await team.listUsers();
+  users.forEach(async (user) => {
+    const teams = await user.listTeams();
+    if (
+      teams.filter((t) => t.id === team.id || t.id === STUDENT_TEAM_ID)
+        .length === 1
+    ) {
+      // Delete the user if they are the only member of the team (ignore student team)
+      await user.delete();
+    }
+  });
+
+  await team.delete();
+
+  return true;
 }

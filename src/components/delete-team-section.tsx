@@ -1,8 +1,9 @@
 "use client";
 
-import { useStackApp, useUser } from "@stackframe/stack";
+import { Team, useUser } from "@stackframe/stack";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { Section } from "./elements/section";
 import {
   Accordion,
@@ -12,22 +13,21 @@ import {
 } from "./ui/accordion";
 import { Button } from "./ui/button";
 import { Typography } from "@stackframe/stack-ui";
-import { useRouter } from "next/navigation";
+import { deleteTeam } from "@/lib/actions";
 
-export function DeleteAccountSection() {
-  const app = useStackApp();
-  const project = app.useProject();
-  if (!project.config.clientUserDeletionEnabled) {
+export function DeleteTeamSection({ team }: { team: Team }) {
+  const user = useUser({ or: "redirect" });
+  const hasPermission = user.hasPermission(team, "$delete_team");
+  if (!hasPermission) {
     return null;
   }
 
-  const t = useTranslations("DeleteAccountSection");
+  const t = useTranslations("DeleteTeamSection");
   const [deleting, setDeleting] = useState(false);
-  const user = useUser({ or: "redirect" });
   const router = useRouter();
 
   return (
-    <Section title={t("Delete Account")} description={t("delete account tips")}>
+    <Section title={t("Delete Team")} description={t("delete team tips")}>
       <div className="stack-scope flex flex-col items-stretch">
         <Accordion type="single" collapsible className="w-full">
           <AccordionItem value="item-1">
@@ -39,7 +39,7 @@ export function DeleteAccountSection() {
                     variant="destructive"
                     onClick={() => setDeleting(true)}
                   >
-                    {t("Delete account")}
+                    {t("Delete team")}
                   </Button>
                 </div>
               ) : (
@@ -51,11 +51,12 @@ export function DeleteAccountSection() {
                     <Button
                       variant="destructive"
                       onClick={async () => {
-                        await user.delete();
+                        await deleteTeam(team.id);
                         router.push("/dashboard");
+                        router.refresh();
                       }}
                     >
-                      {t("Delete Account")}
+                      {t("Delete Team")}
                     </Button>
                     <Button
                       variant="secondary"

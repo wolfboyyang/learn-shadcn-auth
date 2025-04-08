@@ -8,6 +8,7 @@ import { TeamProfileImageSection } from "./team-profile-image-section";
 import { TeamDisplayNameSection } from "./team-display-namesection";
 import { LeaveTeamSection } from "./leave-team-section";
 import { MemberListSection } from "./member-list-section";
+import { DeleteTeamSection } from "./delete-team-section";
 
 export function TeamPage({ id }: { id: string }) {
   const user = useUser({ or: "redirect" });
@@ -21,6 +22,7 @@ export function TeamPage({ id }: { id: string }) {
         <TeamProfileImageSection team={team} />
         <TeamDisplayNameSection team={team} />
         <LeaveTeamSection team={team} />
+        <DeleteTeamSection team={team} />
       </PageLayout>
     )
   );

@@ -141,6 +141,14 @@
     "confirm tips": "Are you sure you want to delete your account? This action is IRREVERSIBLE and will delete ALL associated data.",
     "Cancel": "Cancel"
   },
+  "DeleteTeamSection": {
+    "Delete Team": "Delete Team",
+    "delete team tips": "Permanently remove your account and all associated data",
+    "Danger zone": "Danger zone",
+    "Delete team": "Delete team",
+    "confirm tips": "Are you sure you want to delete your team? This action is IRREVERSIBLE and will delete ALL associated data.",
+    "Cancel": "Cancel"
+  },
   "EditableText": {
     "Save": "Save",
     "Cancel": "Cancel"
