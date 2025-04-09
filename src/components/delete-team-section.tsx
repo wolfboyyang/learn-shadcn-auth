@@ -1,6 +1,6 @@
 "use client";
 
-import { Team, useUser } from "@stackframe/stack";
+import { Team } from "@stackframe/stack";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
