@@ -14,13 +14,14 @@ import {
 import { Button } from "./ui/button";
 import { Typography } from "@stackframe/stack-ui";
 import { deleteTeam } from "@/lib/actions";
+import { $current_team, updateTeams } from "@/store/auth";
+import { useStore } from "@nanostores/react";
 
 export function DeleteTeamSection({ team }: { team: Team }) {
-  const user = useUser({ or: "redirect" });
-  const hasPermission = user.hasPermission(team, "$delete_team");
   const t = useTranslations("DeleteTeamSection");
   const [deleting, setDeleting] = useState(false);
   const router = useRouter();
+  const hasPermission = useStore($current_team);
 
   if (!hasPermission) {
     return null;
@@ -52,6 +53,7 @@ export function DeleteTeamSection({ team }: { team: Team }) {
                       variant="destructive"
                       onClick={async () => {
                         await deleteTeam(team.id);
+                        await updateTeams();
                         router.push("/dashboard");
                         router.refresh();
                       }}

@@ -21,11 +21,9 @@ import { usePathname } from "next/navigation";
 import { TeamIcon } from "../team-icon";
 import { Separator } from "../ui/separator";
 import { useEffect, useState } from "react";
-import {
-  type ClientTeam,
-  getTeams,
-  hasCreateTeamPermission,
-} from "@/lib/actions";
+import { hasCreateTeamPermission } from "@/lib/actions";
+import { useStore } from "@nanostores/react";
+import { $teams, updateTeams } from "@/store/auth";
 
 type MenuItem = {
   title: string;
@@ -42,24 +40,13 @@ export default function AppSidebar() {
   const stackApp = useStackApp();
   const project = stackApp.useProject();
 
-  const [teams, setTeams] = useState<ClientTeam[]>([]);
-  useEffect(() => {
-    const fetchTeams = async () => {
-      try {
-        const result = await getTeams();
-        setTeams(result);
-      } catch (error) {
-        console.error("Error fetching teams:", error);
-      }
-    };
-
-    fetchTeams();
-  }, [user]);
+  const teams = useStore($teams);
 
   const [createTeamEnabled, setCreateTeamEnabled] = useState(false);
   useEffect(() => {
     const fetchData = async () => {
       try {
+        await updateTeams();
         const result = await hasCreateTeamPermission();
         setCreateTeamEnabled(result);
       } catch (error) {

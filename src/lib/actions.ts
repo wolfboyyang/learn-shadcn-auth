@@ -92,11 +92,12 @@ export async function deleteTeam(team_id: string) {
 export async function getTeams() {
   const user = await stackServerApp.getUser({ or: "redirect" });
   const teams = await user.listTeams();
-  const clientTeams = teams.map((t) => ({
-    id: t.id,
-    displayName: t.displayName,
-    profileImageUrl: t.profileImageUrl,
-  }));
-  console.log(clientTeams);
+  const clientTeams = teams
+    .filter((t) => t.id != STUDENT_TEAM_ID)
+    .map((t) => ({
+      id: t.id,
+      displayName: t.displayName,
+      profileImageUrl: t.profileImageUrl,
+    }));
   return clientTeams;
 }

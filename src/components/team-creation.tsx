@@ -18,6 +18,7 @@ import { Section } from "./elements/section";
 import PageLayout from "./layout/page-layout";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
+import { updateTeams } from "@/store/auth";
 
 export function TeamCreation() {
   const t = useTranslations("TeamCreation");
@@ -41,6 +42,7 @@ export function TeamCreation() {
 
     try {
       const team_id = await createTeam(data.displayName);
+      await updateTeams();
       const url = `/dashboard/teams/${team_id}`;
       router.prefetch(url);
       router.push(url);
